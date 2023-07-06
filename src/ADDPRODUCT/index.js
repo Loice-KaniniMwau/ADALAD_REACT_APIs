@@ -1,19 +1,20 @@
 import React,{useState} from "react";
 import './style.css'
 import { Link } from 'react-router-dom';
-const Login=()=>{
-    const[username,setUsername]=useState("")
-    const[password,setPassword]=useState("")
-    console.log({username});
-    console.log({password});
+const Addproduct=()=>{
+    const[id,setId]=useState("")
+    const[title,settitle]=useState("")
+    const[image,setImage]=useState("")
+    
     const handleSubmit=async(e)=>{
         e.preventDefault()
         const data={
-            username:username,
-            password:password,
+            id:id,
+            title:title,
+            image:image
         };
       try{
-        const response=await fetch('https://dummyjson.com/auth/login',{
+        const response=await fetch('https://dummyjson.com/products/add',{
            method:"POST",
            headers:{
             'Content-Type': 'application/json' 
@@ -32,33 +33,33 @@ const Login=()=>{
     return(
         <div>
             <form className="form" onSubmit={handleSubmit}>
-                <h1>Login</h1>
-                <input placeholder="Enter User name" type="text"
-                onChange={(e)=>{setUsername(e.target.value)}}
+                <h1>New Product</h1>
+                <input placeholder="Enter product id" type="text"
+                onChange={(e)=>{setId(e.target.value)}}
                 
                 />
                 <br/>
                 <br/>
                 <input placeholder="Enter password" type="password"
-                onChange={(e)=>{setPassword(e.target.value)}}
+                onChange={(e)=>{settitle(e.target.value)}}
                 
                 />
                 <br/>
                 <br/>
+                <input placeholder="Enter image url" type="url"
+                onChange={(e)=>{setImage(e.target.value)}}
+                
+                />
                 <Link to={`/Product/`}className="buton">
             <button type="submit" className="button">Login</button >
           </Link>
 
                 
-                {/* <button type="submit">Login</button> */}
-
-                {/*   <Link to={`/Details/${item.id}` }className="buton">
-            <button type="submit" className="button">View details</button >
-          </Link> */}
+            
             </form>
 
 
         </div>
     )
 }
-export default Login;
+export default Addproduct;

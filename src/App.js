@@ -1,46 +1,31 @@
 import logo from './logo.svg';
 import './App.css';
+import Products from './ALLPRODUCTS'
 import Login from './Login';
-import Products from './Products';
+import NavBar from './NavBar';
+import { BrowserRouter,Routes,Route } from 'react-router-dom';
 import Details from './Details';
-// import Details from './Details'
-
+// import Addproduct from './Addproduct';
+// import addProduct from './Addproduct/addproduct';
 function App() {
   return (
     <div>
-      <Login/>
-      <Products/>
-      <Details/>
-      {/* <Details/> */}
-    </div>
+      <NavBar/>
+      <BrowserRouter>
+      <Routes>
+        <Route index element={<Login/>}/>
+        <Route path='/login' element={<Login/>}/>
+        <Route path='/product' element={<Products/>}/>
+        {/* <Route path='Addproduct' element={<Addproduct />} /> */}
+
+       
+        <Route path='/Details/:productId' element={<Details/>}/>
+        
+      </Routes>
+      </BrowserRouter>
+      </div>
   );
 }
-import Details from './Details';
-
 export default App;
 
-// import logo from './logo.svg';
-// import './App.css';
-// import Products from './Productpage';
-// import Login from './Loginpage';
-// import Navigationbar from './Navigationbar/navigation';
-// import { BrowserRouter,Routes,Route } from 'react-router-dom';
-// import ProductDetails from './ProductDetails/productdetails';
-// // import addProduct from './Addproduct/addproduct';
-// function App() {
-//   return (
-//     <div>
-//       <Navigationbar/>
-//       <BrowserRouter>
-//       <Routes>
-//         <Route index element={<Login/>}/>
-//         <Route path='/login' element={<Login/>}/>
-//         <Route path='/product' element={<Products/>}/>
-//         <Route path='/productdetails/:productId' element={<ProductDetails/>}/>
-//         {/* <Route path='/addproduct' element={<Addproduct/>}/> */}
-//       </Routes>
-//       </BrowserRouter>
-//       </div>
-//   );
-// }
-// export default App;
+

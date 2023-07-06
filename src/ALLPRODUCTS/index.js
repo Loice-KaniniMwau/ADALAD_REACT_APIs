@@ -1,4 +1,6 @@
+
 import React ,{useState,useEffect}from "react";
+import { Link } from 'react-router-dom';
 
 import './style.css'
 import userEvent from "@testing-library/user-event";
@@ -13,7 +15,7 @@ const Products=()=>{
         })()
 
     },[])
-    console.log(products);
+    console.log(Products);
     const getProducts=async ()=>{
         try{
             setLoading(true);
@@ -47,7 +49,10 @@ return(
         <h2>{item.title}</h2>
         <h2>{item.price}</h2>
         <h2>{item.discountPercentage}</h2>
-        <button>View Details</button>
+        <Link to={`/Details/${item.id}` }className="buton">
+            <button type="submit" className="button">View details</button >
+          </Link>
+ 
         </div>
         
     ))} 

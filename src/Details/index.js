@@ -1,23 +1,38 @@
-
-import React from "react";
-import Products from "../Products";
-import "./style.css";
-
-const Details = ({ productId, products }) => {
-  const selectedProduct = products.find((item) => item.id === productId);
-
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+const Details = () => {
+  const {productId} = useParams();
+  const [product, setProduct] = useState(null);
+  useEffect(() => {
+    const details = async () => {
+      try {
+        const response = await fetch(`https://dummyjson.com/product/${productId}`);
+        const data = await response.json();
+        setProduct(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    details();
+  }, [productId]);
+  if (!product) {
+    return <p>Loading ...</p>;
+  }
   return (
-    <div className="details">
-      <h2>Product Details</h2>
-      <h2>{selectedProduct.title}</h2>
-      <p>{selectedProduct.description}</p>
-      <h2>{selectedProduct.price}</h2>
-      <h2>{selectedProduct.discountPercentage}</h2>
-      {/* Render other details of the selected product */}
+    <div>
+      <h1>Product Details</h1>
+      <div>
+        <img src={product.thumbnail}  />
+        <h2>{product.title}</h2>
+        <h4>{product.rating}</h4>
+        <p>{product.brand}</p>
+        <p>{product.price}</p>
+      
+
+      </div>
     </div>
   );
 };
-
 export default Details;
 
 
