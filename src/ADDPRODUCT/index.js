@@ -40,7 +40,7 @@ const Addproduct=()=>{
                 />
                 <br/>
                 <br/>
-                <input placeholder="Enter password" type="password"
+                <input placeholder="Enter title" type="text"
                 onChange={(e)=>{settitle(e.target.value)}}
                 
                 />
@@ -51,7 +51,7 @@ const Addproduct=()=>{
                 
                 />
                 <Link to={`/Product/`}className="buton">
-            <button type="submit" className="button">Login</button >
+            <button type="submit" className="button">Add Product</button >
           </Link>
 
                 
